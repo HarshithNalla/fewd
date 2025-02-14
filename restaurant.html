@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Homepage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        #nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        #nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px gray;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #444;
+            color: white;
+        }
+        .menu-card {
+            width: 200px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px gray;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            background: lightyellow;
+        }
+        .menu-card:hover {
+            background: lightcoral;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="nav">
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <h1>Delicious Restaurant</h1>
+
+    <h2>Our Specialties</h2>
+    <ol style="list-style-type: upper-roman;">
+        <li>Italian</li>
+        <li>Indian</li>
+        <li>Chinese</li>
+        <li>Mexican</li>
+        <li>French</li>
+    </ol>
+
+    <h2>Menu</h2>
+    <table>
+        <tr>
+            <th>Dish Name</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Pasta</td>
+            <td>$12</td>
+            <td>Cheesy and creamy pasta</td>
+        </tr>
+        <tr>
+            <td>Sushi</td>
+            <td>$15</td>
+            <td>Freshly prepared sushi rolls</td>
+        </tr>
+    </table>
+
+    <div class="menu-card">Spaghetti Bolognese - $10</div>
+    <div class="menu-card">Tandoori Chicken - $15</div>
+
+</body>
+</html>

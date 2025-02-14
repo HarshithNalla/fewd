@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            margin: 15% auto;
+            width: 40%;
+            text-align: center;
+        }
+        .uploaded-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="studentTable">
+        <tr>
+            <th>Serial No</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Profile Link</th>
+            <th>Upload Image</th>
+            <th>Uploaded Image</th>
+        </tr>
+    </table>
+
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <h3>Upload Image</h3>
+            <input type="file" id="imageInput" accept="image/jpeg">
+            <button onclick="submitImage()">Upload</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const students = [
+            { name: "John Doe", address: "123 Street, NY", phone: "1234567890", profile: "#", id: 1 },
+            { name: "Jane Doe", address: "456 Road, LA", phone: "9876543210", profile: "#", id: 2 }
+        ];
+
+        function populateTable() {
+            let table = document.getElementById("studentTable");
+            students.forEach((student, index) => {
+                let row = table.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${student.name}</td>
+                    <td>${student.address}</td>
+                    <td>${student.phone}</td>
+                    <td><a href="${student.profile}" target="_blank">Profile</a></td>
+                    <td><button onclick="openModal(${index})">Upload</button></td>
+                    <td id="image-${index}"></td>
+                `;
+            });
+        }
+
+        let selectedStudentIndex = null;
+
+        function openModal(index) {
+            selectedStudentIndex = index;
+            document.getElementById("uploadModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("uploadModal").style.display = "none";
+        }
+
+        function submitImage() {
+            let file = document.getElementById("imageInput").files[0];
+            if (file && file.type === "image/jpeg") {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(`image-${selectedStudentIndex}`).innerHTML = `<img src="${e.target.result}" class="uploaded-img">`;
+                };
+                reader.readAsDataURL(file);
+                closeModal();
+            } else {
+                alert("Please upload a JPEG image.");
+            }
+        }
+
+        populateTable();
+    </script>
+
+</body>
+</html>
