@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Customer Feedback</h2>
+        <form>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="phone">Contact Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+            <label>Rate Our Service:</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">5</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">4</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">3</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">2</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">1</label>
+            </div>
+
+            <label for="question">Questions about the product/service?</label>
+            <textarea id="question" name="question" rows="3" placeholder="Write your question here..."></textarea>
+
+            <label for="comments">Additional Feedback:</label>
+            <textarea id="comments" name="comments" rows="3" placeholder="Share your feedback..."></textarea>
+
+            <button type="submit">Send Feedback</button>
+        </form>
+    </div>
+</body>
+
+</html>
