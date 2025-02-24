@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Haven - Fine Dining</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f1ea;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            padding-top: 70px; /* Add padding to body to account for fixed navbar */
+        }
+        .navbar {
+            background-color: #8b0000;
+            padding: 15px;
+            position: fixed; /* Make navbar static */
+            top: 0; /* Position at the top */
+            left: 0; /* Stretch across the entire width */
+            width: 100%; /* Full width */
+            z-index: 1000; /* Ensure navbar stays above other content */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            color: #8b0000;
+            margin-top: 30px;
+        }
+        .specialties {
+            width: 60%;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .menu-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+        .menu-item h3 {
+            color: #8b0000;
+            margin: 0;
+        }
+        .menu-item p {
+            margin: 5px 0;
+        }
+        .add-to-cart-btn {
+            background-color: #8b0000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #a52a2a;
+        }
+        .cart {
+            margin: 20px auto;
+            width: 60%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            color: #8b0000;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item button {
+            background-color: #8b0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-item button:hover {
+            background-color: #a52a2a;
+        }
+        footer {
+            background-color: #8b0000;
+            color: #fff;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        .extra-content {
+            margin: 40px auto;
+            width: 80%;
+            text-align: left;
+        }
+        .extra-content h2 {
+            color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Static Navbar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">Reservations</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <h1>Welcome to Taste Haven</h1>
+    <div class="specialties">
+        <h2>Signature Dishes</h2>
+        <select id="signature-dishes">
+            <option value="French Ratatouille">French Ratatouille</option>
+            <option value="Greek Moussaka">Greek Moussaka</option>
+            <option value="Spiced Moroccan Tagine">Spiced Moroccan Tagine</option>
+            <option value="Classic New York Cheesecake">Classic New York Cheesecake</option>
+        </select>
+    </div>
+    <h2>Our Menu</h2>
+    <div class="menu-container">
+        <div class="menu-item">
+            <h3>Grilled Salmon</h3>
+            <p>Perfectly grilled salmon with herbs</p>
+            <p><b>$18</b></p>
+            <button class="add-to-cart-btn" onclick="addToCart('Grilled Salmon', 18)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Pasta Alfredo</h3>
+            <p>Creamy Alfredo sauce with parmesan</p>
+            <p><b>$15</b></p>
+            <button class="add-to-cart-btn" onclick="addToCart('Pasta Alfredo', 15)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>BBQ Ribs</h3>
+            <p>Slow-cooked ribs with signature sauce</p>
+            <p><b>$22</b></p>
+            <button class="add-to-cart-btn" onclick="addToCart('BBQ Ribs', 22)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Chocolate Lava Cake</h3>
+            <p>Rich chocolate cake with molten center</p>
+            <p><b>$10</b></p>
+            <button class="add-to-cart-btn" onclick="addToCart('Chocolate Lava Cake', 10)">Add to Cart</button>
+        </div>
+    </div>
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+    </div>
+
+    <!-- Extra Content to Showcase Static Navbar -->
+    <div class="extra-content">
+        <h2>About Us</h2>
+        <p>
+            Taste Haven is a fine dining restaurant that offers a unique culinary experience. Our chefs are passionate about creating dishes that delight the senses and bring people together. Whether you're here for a romantic dinner or a family celebration, we promise an unforgettable experience.
+        </p>
+        <h2>Our Philosophy</h2>
+        <p>
+            At Taste Haven, we believe in using only the freshest ingredients sourced from local farmers and producers. Our menu is a celebration of global flavors, crafted with care and served with love.
+        </p>
+        <h2>Visit Us</h2>
+        <p>
+            Located in the heart of the city, Taste Haven is the perfect place to enjoy a meal with friends and family. Our elegant ambiance and exceptional service will make you feel right at home.
+        </p>
+        <h2>Contact Us</h2>
+        <p>
+            For reservations or inquiries, please call us at <b>+1 234 567 890</b> or email us at <b>info@tastehaven.com</b>. We look forward to serving you!
+        </p>
+    </div>
+
+    <footer>
+        <p>Contact us: info@tastehaven.com | +1 234 567 890</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach((cartItem, index) => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <span>${cartItem.item} - $${cartItem.price}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItems.appendChild(cartItemElement);
+            });
+        }
+    </script>
+</body>
+</html>
