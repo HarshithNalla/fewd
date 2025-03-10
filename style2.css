@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 70px; /* Adjust based on navbar height */
+}
+
+/* Custom styling for header */
+header {
+    padding: 50px 0;
+}
+
+/* Custom styling for footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Custom styling for gallery */
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Fix navbar spacing */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030; /* Ensures it stays above other content */
+}
+
+/* Adjust container spacing */
+.container {
+    margin-top: 20px;
+}
+
+/* Ensure navbar doesn't push content down */
+.navbar + .container {
+    margin-top: 80px; /* Adjust for fixed navbar */
+}
+
+/* Align content in rows properly */
+.row {
+    display: flex;
+    align-items: center;
+}
