@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">MyShop</a>
@@ -27,48 +28,64 @@
         </div>
     </nav>
 
+  
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center mb-4">Get in Touch</h2>
+        <p class="text-center text-muted">We’d love to hear from you! Reach out to us via email, phone, or the form below.</p>
 
-    <div class="container mt-5 pt-4">
-        <h2 class="text-center">Contact Us</h2>
-        <p class="text-center">We’d love to hear from you! Reach out to us via email, phone, or the form below.</p>
-
-        <div class="row mt-4">
+        <div class="row mt-4 g-4">
+       
             <div class="col-md-6">
-                <h5>Contact Information</h5>
-                <p><strong>Email:</strong> support@myshop.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
-                <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+                <div class="p-4 border rounded bg-light shadow">
+                    <h5 class="mb-3">Contact Information</h5>
+                    <p><i class="bi bi-envelope-fill"></i> <strong>Email:</strong> support@myshop.com</p>
+                    <p><i class="bi bi-telephone-fill"></i> <strong>Phone:</strong> +123 456 7890</p>
+                    <p><i class="bi bi-geo-alt-fill"></i> <strong>Address:</strong> 123 Main Street, City, Country</p>
+                </div>
+
+                <div class="mt-4">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=New York&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" height="250" class="border rounded shadow"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
             </div>
 
             <div class="col-md-6">
-                <h5>Send Us a Message</h5>
-                <form>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                    </div>
+                <div class="p-4 border rounded bg-light shadow">
+                    <h5 class="mb-3">Send Us a Message</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                    </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Your Message</label>
-                        <textarea class="form-control" id="message" rows="4" placeholder="Type your message here" required></textarea>
-                    </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Type your message here" required></textarea>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
- 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 MyShop. All rights reserved.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    
+        fetch('footer2.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 </html>

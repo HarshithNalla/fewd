@@ -6,6 +6,34 @@
     <title>About Us - MyShop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style2.css">
+    <style>
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .content-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2, h4 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 5px 0;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+        ul li:hover {
+            color: #007bff;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
     
@@ -28,41 +56,66 @@
         </div>
     </nav>
 
-    <div class="container mt-4 pt-4">
-        <h2 class="text-center">About Us</h2>
-        <p class="text-center">We are a leading e-commerce platform providing top-notch products with a commitment to quality and customer satisfaction.</p>
-        
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h4>Our Mission</h4>
-                <p>At MyShop, our mission is to bring customers the best shopping experience by offering a diverse range of high-quality products at competitive prices.</p>
+    <div class="container mt-5 pt-5">
+        <div class="content-box">
+            <h2 class="text-center">About Us</h2>
+            <p class="text-center">We are a leading e-commerce platform providing top-notch products with a commitment to quality and customer satisfaction.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4>Our Mission</h4>
+                            <p>At MyShop, our mission is to bring customers the best shopping experience by offering a diverse range of high-quality products at competitive prices.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4>Why Choose Us?</h4>
+                            <p>We believe in reliability, affordability, and excellent customer service. With our seamless online shopping experience, we ensure that our customers get exactly what they need with fast delivery and secure transactions.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h4>Why Choose Us?</h4>
-                <p>We believe in reliability, affordability, and excellent customer service. With our seamless online shopping experience, we ensure that our customers get exactly what they need with fast delivery and secure transactions.</p>
-            </div>
-        </div>
 
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h4>Our Values</h4>
-                <ul>
-                    <li>Customer Satisfaction</li>
-                    <li>High-Quality Products</li>
-                    <li>Secure Shopping</li>
-                    <li>Fast & Reliable Shipping</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <h4>Our Story</h4>
-                <p>Founded in 2020, MyShop started as a small online store aiming to make quality products accessible to everyone. Over the years, we have expanded our catalog and built strong relationships with trusted suppliers to serve customers better.</p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4>Our Values</h4>
+                            <ul>
+                                <li>Customer Satisfaction</li>
+                                <li>High-Quality Products</li>
+                                <li>Secure Shopping</li>
+                                <li>Fast & Reliable Shipping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4>Our Story</h4>
+                            <p>Founded in 2020, MyShop started as a small online store aiming to make quality products accessible to everyone. Over the years, we have expanded our catalog and built strong relationships with trusted suppliers to serve customers better.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 MyShop. All rights reserved.</p>
-    </footer>
+    <div id="footer-container"></div>
+
+    <script>
+        fetch("footer2.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-container").innerHTML = data;
+            })
+            .catch(error => console.log("Error loading footer:", error));
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

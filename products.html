@@ -6,9 +6,31 @@
     <title>Products - MyShop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style2.css">
+    <style>
+        .card {
+    display: flex;
+    flex-direction: column;
+    height: 450px; 
+}
+
+.card-img-top {
+    height: 250px; 
+    object-fit: contain; 
+    padding: 10px; 
+    background: white;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+    </style>
 </head>
 <body>
-
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -29,14 +51,19 @@
         </div>
     </nav>
 
+  
     <div class="container mt-5 pt-4">
         <h2 class="text-center">Our Products</h2>
         <p class="text-center">Explore our wide range of high-quality products, carefully curated for your needs.</p>
 
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="download (3).jpeg" class="card-img-top" alt="Product 1">
+        <div class="input-group mb-3">
+            <input type="text" id="searchBar" class="form-control" placeholder="Search for products..." onkeyup="filterProducts()">
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4" id="productList">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (3).jpeg" class="card-img-top" alt="Wireless Headphones">
                     <div class="card-body">
                         <h5 class="card-title">Wireless Headphones</h5>
                         <p class="card-text">Enjoy crystal-clear sound with our noise-canceling wireless headphones.</p>
@@ -45,9 +72,9 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="download (2).jpeg" class="card-img-top" alt="Product 2">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (2).jpeg" class="card-img-top" alt="Smartwatch">
                     <div class="card-body">
                         <h5 class="card-title">Smartwatch</h5>
                         <p class="card-text">Track your fitness and stay connected with our latest smartwatch collection.</p>
@@ -56,9 +83,9 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="download (4).jpeg" class="card-img-top" alt="Product 3">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (4).jpeg" class="card-img-top" alt="Gaming Keyboard">
                     <div class="card-body">
                         <h5 class="card-title">Gaming Keyboard</h5>
                         <p class="card-text">Enhance your gaming experience with our RGB mechanical keyboard.</p>
@@ -67,10 +94,9 @@
                 </div>
             </div>
 
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="download.jpeg" class="card-img-top" alt="Product 2">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download.jpeg" class="card-img-top" alt="Smartwatch">
                     <div class="card-body">
                         <h5 class="card-title">Smartwatch</h5>
                         <p class="card-text">Track your fitness and stay connected with our latest smartwatch collection.</p>
@@ -78,14 +104,70 @@
                     </div>
                 </div>
             </div>
+
+        
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (1).jpeg" class="card-img-top" alt="Laptop">
+                    <div class="card-body">
+                        <h5 class="card-title">Laptop</h5>
+                        <p class="card-text">High-performance laptop for work and play.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (5).jpeg" class="card-img-top" alt="Bluetooth Speaker">
+                    <div class="card-body">
+                        <h5 class="card-title">Bluetooth Speaker</h5>
+                        <p class="card-text">Portable and powerful sound system for your adventures.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="download (6).jpeg" class="card-img-top" alt="Digital Camera">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Camera</h5>
+                        <p class="card-text">Capture your moments in high resolution with our latest camera.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
- 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 MyShop. All rights reserved.</p>
-    </footer>
+   
+    <div id="footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+   
+        fetch("footer2.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+
+        // Product Search Functionality
+        function filterProducts() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let products = document.getElementById("productList").getElementsByClassName("col");
+
+            for (let i = 0; i < products.length; i++) {
+                let productTitle = products[i].querySelector(".card-title").textContent.toLowerCase();
+                if (productTitle.includes(input)) {
+                    products[i].style.display = "block";
+                } else {
+                    products[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>
