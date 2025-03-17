@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c36;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .clock {
+            width: 200px;
+            height: 200px;
+            border: 5px solid white;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            width: 2px;
+            background: white;
+            transform-origin: bottom;
+        }
+        .hour {
+            height: 40px;
+            background: white;
+        }
+        .minute {
+            height: 60px;
+            background: lightgray;
+        }
+        .second {
+            height: 80px;
+            background: red;
+        }
+        .mark {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: white;
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+    </div>
+    <script>
+        const clock = document.querySelector('.clock');
+        const clockRadius = 95;
+        for (let i = 0; i < 12; i++) {
+            let mark = document.createElement('div');
+            mark.classList.add('mark');
+            let angle = (i * 30) * (Math.PI / 180);
+            let x = clockRadius * Math.cos(angle);
+            let y = clockRadius * Math.sin(angle);
+            mark.style.transform = `translate(${x}px, ${y}px) rotate(${i * 30}deg)`;
+            clock.appendChild(mark);
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const hourDeg = (hours + minutes / 60) * 30;
+            const minuteDeg = (minutes + seconds / 60) * 6;
+            const secondDeg = seconds * 6;
+
+            document.getElementById('hour').style.transform = `rotate(${hourDeg}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minuteDeg}deg)`;
+            document.getElementById('second').style.transform = `rotate(${secondDeg}deg)`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
